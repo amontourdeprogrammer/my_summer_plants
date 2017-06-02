@@ -21,11 +21,18 @@ function handler (req, res) {
 board = new five.Board();
 
 board.on("ready", function() {
-  servo = new five.Servo(10);
+  servo = new five.Servo({
+    pin: 10,
+    startAt: 0
+  });
 
   io.sockets.on('connection', function (socket) {
     socket.on('click', function () {
-      servo.sweep()
+
+      servo.to(180, 2000);
+      setTimeout(() => {
+        servo.to(0, 2000);
+      }, 3500);
     });
   });
 });
