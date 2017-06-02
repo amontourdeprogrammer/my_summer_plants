@@ -56,24 +56,19 @@ app.get('/oauth', function(req, res) {
 
 // Route the endpoint that our slash command will point to and send back a simple response to indicate that ngrok is working
 app.post('/command', function(req, res) {
-    res.send('Your ngrok tunnel is up and running!');
-});
+    res.send('l\'arrosage démarre!');
 
-board = new five.Board();
+    board = new five.Board();
 
-board.on("ready", function() {
-  servo = new five.Servo({
-    pin: 10,
-    startAt: 0
-  });
-
-  io.sockets.on('connection', function (socket) {
-    socket.on('click', function () {
+    board.on("ready", function() {
+      servo = new five.Servo({
+        pin: 10,
+        startAt: 0
+      });
 
       servo.to(180, 2000);
       setTimeout(() => {
-        servo.to(0, 2000);
-      }, 3500);
-    });
-  });
+         servo.to(0, 2000);
+        }, 3500);
+        });
 });
