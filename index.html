@@ -1,0 +1,18 @@
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    $(document).ready(function() {
+      var socket = io.connect('/');
+      $('#button').click(function(e){
+        socket.emit('click');
+        e.preventDefault();
+      });
+    });
+  </script>
+</head>
+<body>
+  <button id="button" href="#">SERVO START</button>
+</body>
+</html>
